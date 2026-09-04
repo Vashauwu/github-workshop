@@ -443,6 +443,10 @@ summary { cursor: pointer; color: #B99CFF; font-size: .55em; font-weight: 700; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; }
 }
+
+.big    { font-size: 1.35em !important; font-weight: 700; line-height: 1.3; }
+.medium { font-size: 1.05em !important; font-weight: 600; line-height: 1.35; }
+.small  { font-size: 0.80em !important; line-height: 1.4; }
 </style>
 <!-- ============================ TITLE ============================ -->
 </section>
@@ -572,7 +576,7 @@ Issues and automated checks
 <section id="the-whole-workflow-in-one-picture" class="title-slide slide level1 center">
 <h1>The whole workflow in one picture</h1>
 <div class="flow">
-<p><span class="node feature">Branch</span> <span class="arrow">→</span> <span class="node">Commit</span> <span class="arrow">→</span> <span class="node">Push</span> <span class="arrow">→</span> <span class="node blue">Pull Request</span> <span class="arrow">→</span> <span class="node green">Review + Checks</span> <span class="arrow">→</span> <span class="node main">main</span></p>
+<p><span class="node feature medium">Branch</span> <span class="arrow medium">→</span> <span class="node medium">Commit</span> <span class="arrow medium">→</span> <span class="node medium">Push</span> <span class="arrow medium">→</span> <span class="node blue medium">Pull Request</span> <span class="arrow medium">→</span> <span class="node green medium">Review + Checks</span> <span class="arrow medium">→</span> <span class="node main medium">main</span></p>
 </div>
 <div class="note">
 <p>
@@ -601,14 +605,14 @@ A <strong>commit</strong> is a saved checkpoint. You can always come back to it.
 <h1>Write commit messages people understand</h1>
 <div class="grid-2">
 <div class="card">
-<p><span class="label label-purple">NOT HELPFUL</span></p>
+<p><span class="label label-purple medium">NOT HELPFUL</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="" aria-label="1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"stuff"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p class="muted">
 Nobody knows what changed.
 </p>
 </div>
 <div class="card green">
-<p><span class="label label-green">HELPFUL</span></p>
+<p><span class="label label-green medium">HELPFUL</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="" aria-label="1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add baseline churn model"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p class="muted">
 Answers the question: what changed?
@@ -644,7 +648,7 @@ Answers the question: what changed?
 <span id="cb8-5"><a href="" aria-label="5"></a></span>
 <span id="cb8-6"><a href="" aria-label="6"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="flow">
-<p><span class="node">Your computer</span> <span class="arrow">git push →</span> <span class="node main">GitHub · main</span></p>
+<p><span class="node medium">Your computer</span> <span class="arrow medium">git push →</span> <span class="node main medium">GitHub · main</span></p>
 </div>
 </section></section>
 <section id="three-commands-youll-use-daily" class="title-slide slide level1 center">
@@ -712,7 +716,7 @@ A branch is a safe copy where you can make changes without touching the shared p
 <section id="the-daily-loop-on-a-branch" class="title-slide slide level1 center">
 <h1>The daily loop on a branch</h1>
 <div class="steps">
-<div class="step">
+<div class="step medium">
 <div class="num">
 1
 </div>
@@ -720,7 +724,7 @@ A branch is a safe copy where you can make changes without touching the shared p
 Create branch
 </p>
 </div>
-<div class="step">
+<div class="step medium">
 <div class="num">
 2
 </div>
@@ -728,7 +732,7 @@ Create branch
 Make changes
 </p>
 </div>
-<div class="step">
+<div class="step medium">
 <div class="num">
 3
 </div>
@@ -736,7 +740,7 @@ Make changes
 Commit
 </p>
 </div>
-<div class="step">
+<div class="step medium">
 <div class="num">
 4
 </div>
@@ -744,7 +748,7 @@ Commit
 Push
 </p>
 </div>
-<div class="step">
+<div class="step medium">
 <div class="num">
 5
 </div>
@@ -803,7 +807,7 @@ Reveal answer
 <section id="a-pull-request-is-where-the-team-reviews-your-change" class="slide level2">
 <h2>A Pull Request is where the team reviews your change</h2>
 <div class="flow">
-<p><span class="node feature">feature/model</span> <span class="arrow">→ Pull Request →</span> <span class="node main">main</span></p>
+<p><span class="node feature medium">feature/model</span> <span class="arrow medium">→ Pull Request →</span> <span class="node main medium">main</span></p>
 </div>
 <div class="grid-3">
 <div class="card purple">
@@ -954,7 +958,7 @@ How do I contribute?
 <section id="what-if-every-pull-request-tested-itself" class="slide level2">
 <h2>What if every Pull Request tested itself?</h2>
 <div class="flow">
-<p><span class="node feature">Pull Request</span> <span class="arrow">→</span> <span class="node blue">GitHub Actions</span> <span class="arrow">→</span> <span class="node green">Tests run</span> <span class="arrow">→</span> <span class="node main">Merge</span></p>
+<p><span class="node feature medium">Pull Request</span> <span class="arrow medium">→</span> <span class="node blue medium">GitHub Actions</span> <span class="arrow medium">→</span> <span class="node green medium">Tests run</span> <span class="arrow medium">→</span> <span class="node main medium">Merge</span></p>
 </div>
 <p>A small file turns this on:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="" aria-label="1"></a><span class="co"># .github/workflows/tests.yml</span></span>
@@ -1004,7 +1008,7 @@ A failing check is an early warning that something may be broken.
 <h2>Create a branch and open a Pull Request</h2>
 <div class="grid-2">
 <div class="card purple">
-<p><span class="label label-purple">YOUR TASK</span></p>
+<p><span class="label label-purple medium">YOUR TASK</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="" aria-label="1"></a><span class="fu">git</span> switch main</span>
 <span id="cb17-2"><a href="" aria-label="2"></a><span class="fu">git</span> pull</span>
 <span id="cb17-3"><a href="" aria-label="3"></a></span>
@@ -1014,7 +1018,7 @@ Create <code>models/your_name_model.py</code>.
 </p>
 </div>
 <div class="card blue">
-<p><span class="label label-blue">THEN</span></p>
+<p><span class="label label-blue medium">THEN</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="" aria-label="1"></a><span class="fu">git</span> add .</span>
 <span id="cb18-2"><a href="" aria-label="2"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add baseline model"</span></span>
 <span id="cb18-3"><a href="" aria-label="3"></a></span>

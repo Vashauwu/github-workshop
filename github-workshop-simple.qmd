@@ -248,6 +248,10 @@ summary { cursor: pointer; color: #B99CFF; font-size: .55em; font-weight: 700; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; }
 }
+
+.big    { font-size: 1.35em !important; font-weight: 700; line-height: 1.3; }
+.medium { font-size: 1.05em !important; font-weight: 600; line-height: 1.35; }
+.small  { font-size: 0.80em !important; line-height: 1.4; }
 </style>
 
 
@@ -365,17 +369,17 @@ final_model_v7_FINAL.ipynb
 # The whole workflow in one picture
 
 <div class="flow">
-<span class="node feature">Branch</span>
-<span class="arrow">→</span>
-<span class="node">Commit</span>
-<span class="arrow">→</span>
-<span class="node">Push</span>
-<span class="arrow">→</span>
-<span class="node blue">Pull Request</span>
-<span class="arrow">→</span>
-<span class="node green">Review + Checks</span>
-<span class="arrow">→</span>
-<span class="node main">main</span>
+<span class="node feature medium">Branch</span>
+<span class="arrow medium">→</span>
+<span class="node medium">Commit</span>
+<span class="arrow medium">→</span>
+<span class="node medium">Push</span>
+<span class="arrow medium">→</span>
+<span class="node blue medium">Pull Request</span>
+<span class="arrow medium">→</span>
+<span class="node green medium">Review + Checks</span>
+<span class="arrow medium">→</span>
+<span class="node main medium">main</span>
 </div>
 
 <div class="note">
@@ -405,7 +409,7 @@ git commit -m "Initial project setup"
 <div class="grid-2">
 
 <div class="card">
-<span class="label label-purple">NOT HELPFUL</span>
+<span class="label label-purple medium">NOT HELPFUL</span>
 
 ```bash
 git commit -m "stuff"
@@ -415,7 +419,7 @@ git commit -m "stuff"
 </div>
 
 <div class="card green">
-<span class="label label-green">HELPFUL</span>
+<span class="label label-green medium">HELPFUL</span>
 
 ```bash
 git commit -m "Add baseline churn model"
@@ -463,9 +467,9 @@ git push -u origin main
 ```
 
 <div class="flow">
-<span class="node">Your computer</span>
-<span class="arrow">git push →</span>
-<span class="node main">GitHub · main</span>
+<span class="node medium">Your computer</span>
+<span class="arrow medium">git push →</span>
+<span class="node main medium">GitHub · main</span>
 </div>
 
 
@@ -525,11 +529,11 @@ git switch -c feature/new-model
 # The daily loop on a branch
 
 <div class="steps">
-<div class="step"><div class="num">1</div><p>Create branch</p></div>
-<div class="step"><div class="num">2</div><p>Make changes</p></div>
-<div class="step"><div class="num">3</div><p>Commit</p></div>
-<div class="step"><div class="num">4</div><p>Push</p></div>
-<div class="step"><div class="num">5</div><p>Open PR</p></div>
+<div class="step medium"><div class="num">1</div><p>Create branch</p></div>
+<div class="step medium"><div class="num">2</div><p>Make changes</p></div>
+<div class="step medium"><div class="num">3</div><p>Commit</p></div>
+<div class="step medium"><div class="num">4</div><p>Push</p></div>
+<div class="step medium"><div class="num">5</div><p>Open PR</p></div>
 </div>
 
 ```bash
@@ -573,9 +577,9 @@ git push -u origin feature/new-model
 ## A Pull Request is where the team reviews your change
 
 <div class="flow">
-<span class="node feature">feature/model</span>
-<span class="arrow">→ Pull Request →</span>
-<span class="node main">main</span>
+<span class="node feature medium">feature/model</span>
+<span class="arrow medium">→ Pull Request →</span>
+<span class="node main medium">main</span>
 </div>
 
 <div class="grid-3">
@@ -723,13 +727,13 @@ python -m src.model
 ## What if every Pull Request tested itself?
 
 <div class="flow">
-<span class="node feature">Pull Request</span>
-<span class="arrow">→</span>
-<span class="node blue">GitHub Actions</span>
-<span class="arrow">→</span>
-<span class="node green">Tests run</span>
-<span class="arrow">→</span>
-<span class="node main">Merge</span>
+<span class="node feature medium">Pull Request</span>
+<span class="arrow medium">→</span>
+<span class="node blue medium">GitHub Actions</span>
+<span class="arrow medium">→</span>
+<span class="node green medium">Tests run</span>
+<span class="arrow medium">→</span>
+<span class="node main medium">Merge</span>
 </div>
 
 A small file turns this on:
@@ -782,7 +786,7 @@ jobs:
 <div class="grid-2">
 
 <div class="card purple">
-<span class="label label-purple">YOUR TASK</span>
+<span class="label label-purple medium">YOUR TASK</span>
 
 ```bash
 git switch main
@@ -795,7 +799,7 @@ git switch -c feature/your-name-model
 </div>
 
 <div class="card blue">
-<span class="label label-blue">THEN</span>
+<span class="label label-blue medium">THEN</span>
 
 ```bash
 git add .
