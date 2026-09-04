@@ -306,7 +306,7 @@ From messy files on your laptop to one workflow the whole team can trust.
 <div class="grid-2">
 
 <div class="card">
-<span class="label label-purple">WHAT IT LOOKS LIKE</span>
+<span class="label label-purple medium">WHAT IT LOOKS LIKE</span>
 
 ```text
 notebook.ipynb
