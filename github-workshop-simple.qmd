@@ -1,0 +1,857 @@
+---
+title: "GitHub for Data Scientists"
+subtitle: "A simple, reliable team workflow"
+author: "Data Science GitHub Workshop"
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    transition: fade
+    controls: true
+    progress: true
+    code-copy: true
+    preview-links: true
+    width: 1600
+    height: 1000
+    margin: 0.04
+---
+
+
+
+<style>
+/* =========================================================
+   MODERN DARK THEME — simplified
+   Navy #000919 · Panel #0B1728 · Purple #6C35E8
+   Blue #2F6BFF · Green #18A957 · White #F7F8FC · Muted #AAB4C8
+   ========================================================= */
+
+:root {
+  --navy:   #000919;
+  --panel:  #111D31;
+  --purple: #6C35E8;
+  --blue:   #2F6BFF;
+  --green:  #18A957;
+  --white:  #F7F8FC;
+  --muted:  #AAB4C8;
+  --line:   rgba(255,255,255,.12);
+}
+
+.reveal {
+  background:
+    radial-gradient(circle at 80% 8%, rgba(108,53,232,.12), transparent 34%),
+    radial-gradient(circle at 8% 92%, rgba(47,107,255,.08), transparent 30%),
+    var(--navy);
+  color: var(--white);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 32px;
+}
+
+.reveal .slides { text-align: left; }
+
+.reveal .slides section {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center !important;
+}
+
+.reveal section {
+  height: 100%;
+  box-sizing: border-box;
+  padding: .4em .9em;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  color: var(--white);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+
+.reveal h1 { font-size: 1.5em;  margin-bottom: .25em; }
+.reveal h2 { font-size: 1.0em;  color: var(--muted); font-weight: 600; margin-bottom: .3em; }
+.reveal h3 { font-size: .7em;   color: var(--muted); margin-bottom: .15em; }
+
+.reveal p,
+.reveal li {
+  color: var(--white);
+  font-size: .66em;
+  line-height: 1.45;
+}
+
+.reveal ul { margin-top: .3em; }
+.reveal li { margin: .22em 0; }
+
+.reveal strong { color: var(--white); }
+
+.reveal code {
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+}
+
+/* ---------- code blocks (light, readable) ---------- */
+
+.reveal pre {
+  width: 100%;
+  border: 1px solid #D9DEE8;
+  border-radius: 14px;
+  background: #FFFFFF;
+  box-shadow: 0 8px 22px rgba(0,0,0,.22);
+}
+
+.reveal pre code {
+  max-height: 460px;
+  font-size: .52em;
+  line-height: 1.45;
+  padding: 1em 1.2em;
+  color: #172033 !important;
+  background: #FFFFFF !important;
+  font-weight: 500;
+}
+
+.reveal pre code .hljs-keyword,
+.reveal pre code .hljs-selector-tag,
+.reveal pre code .hljs-literal { color: #6C35E8 !important; }
+
+.reveal pre code .hljs-string,
+.reveal pre code .hljs-title,
+.reveal pre code .hljs-section { color: #087A9C !important; }
+
+.reveal pre code .hljs-number,
+.reveal pre code .hljs-variable,
+.reveal pre code .hljs-attr { color: #157A4A !important; }
+
+.reveal pre code .hljs-comment { color: #667085 !important; }
+
+.reveal .code-copy-button {
+  color: #172033 !important;
+  border-color: #d9dee83a !important;
+  background: rgba(255,255,255,.09) !important;
+}
+
+.reveal .slide-number { color: var(--muted); background: transparent; font-size: .45em; }
+.reveal a { color: #8A5CF6; }
+.reveal .progress { color: var(--purple); height: 4px; }
+
+/* ---------- layout helpers ---------- */
+
+.center   { text-align: center; }
+.muted    { color: var(--muted) !important; }
+.green-text { color: #55D98B !important; }
+.spacer   { height: .5em; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; align-items: stretch; }
+
+.card {
+  background: linear-gradient(145deg, rgba(17,29,49,.96), rgba(8,18,33,.96));
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: .7em .85em;
+  box-shadow: 0 12px 30px rgba(0,0,0,.16);
+}
+.card p, .card li { margin: .18em 0; }
+.card.purple { border-color: rgba(108,53,232,.55); }
+.card.blue   { border-color: rgba(47,107,255,.55); }
+.card.green  { border-color: rgba(24,169,87,.55); }
+
+.label {
+  display: inline-block;
+  padding: .2em .6em;
+  border-radius: 999px;
+  font-size: .48em;
+  font-weight: 750;
+  letter-spacing: .02em;
+  margin-bottom: .3em;
+}
+.label-purple { background: rgba(108,53,232,.20); color: #B99CFF; }
+.label-blue   { background: rgba(47,107,255,.18); color: #9BB7FF; }
+.label-green  { background: rgba(24,169,87,.18); color: #7EE5A8; }
+
+/* ---------- callout box ---------- */
+
+.note {
+  margin-top: .6em;
+  padding: .5em .8em;
+  border: 1px solid rgba(108,53,232,.6);
+  border-radius: 15px;
+  background: linear-gradient(90deg, rgba(108,53,232,.14), rgba(47,107,255,.08));
+}
+.note p { margin: 0; font-size: .58em !important; }
+
+/* ---------- flow diagram ---------- */
+
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3em;
+  margin: .6em 0;
+  flex-wrap: wrap;
+}
+.node {
+  padding: .35em .7em;
+  border-radius: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-size: .55em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.node.main    { border-color: rgba(47,107,255,.75);  color: #8EACFF; }
+.node.feature { border-color: rgba(108,53,232,.75);  color: #B99CFF; }
+.node.green   { border-color: rgba(24,169,87,.75);   color: #72E0A1; }
+.arrow { color: var(--muted); font-size: .6em; }
+
+/* ---------- numbered steps ---------- */
+
+.steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-top: .6em; }
+.step {
+  text-align: center;
+  padding: .55em .25em;
+  border-radius: 14px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--line);
+}
+.step .num {
+  width: 34px; height: 34px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--purple);
+  font-size: .5em; font-weight: 800;
+}
+.step p { font-size: .5em !important; margin: .35em 0 0; }
+
+/* ---------- title / ending ---------- */
+
+.hero {
+  min-height: 78%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 2%;
+}
+.hero h1 { font-size: 2.1em; margin: 0; }
+.hero .accent { width: 78px; height: 5px; border-radius: 5px; background: var(--purple); margin: .55em 0 .7em; }
+.hero .subtitle { color: var(--muted); font-size: .8em; max-width: 900px; }
+
+details {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: .4em .6em;
+  background: rgba(255,255,255,.025);
+  margin-top: .5em;
+}
+summary { cursor: pointer; color: #B99CFF; font-size: .55em; font-weight: 700; }
+
+@media (max-width: 900px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+
+
+<!-- ============================ TITLE ============================ -->
+
+<div class="hero">
+
+# GitHub for Data Scientists
+
+<div class="accent"></div>
+
+<div class="subtitle">
+From messy files on your laptop to one workflow the whole team can trust.
+</div>
+
+</div>
+
+
+
+# What you'll learn
+
+<div class="grid-3">
+
+<div class="card purple">
+<span class="label label-purple">1 · WORK SAFELY</span>
+<p>Keep your experiments separate from the shared project.</p>
+</div>
+
+<div class="card blue">
+<span class="label label-blue">2 · COLLABORATE</span>
+<p>Review changes together before they go live.</p>
+</div>
+
+<div class="card green">
+<span class="label label-green">3 · STAY RELIABLE</span>
+<p>Let automated checks catch problems early.</p>
+</div>
+
+</div>
+
+<div class="note">
+<p>Everything today builds one habit: <strong>Branch → Commit → Push → Pull Request → Merge.</strong></p>
+</div>
+
+
+
+# The problem
+
+## Without a system, teamwork gets messy fast
+
+<div class="grid-2">
+
+<div class="card">
+<span class="label label-purple">WHAT IT LOOKS LIKE</span>
+
+```text
+notebook.ipynb
+      ↓
+final_model_v7_FINAL.ipynb
+      ↓
+"which file is the latest?"
+```
+
+</div>
+
+<div class="card blue">
+<span class="label label-blue">QUESTIONS NOBODY CAN ANSWER</span>
+<ul>
+<li>Who changed it?</li>
+<li>What exactly changed?</li>
+<li>Can we review it first?</li>
+<li>Can we undo it?</li>
+</ul>
+</div>
+
+</div>
+
+
+
+# Git vs GitHub
+
+## The one distinction to remember
+
+<div class="grid-2">
+
+<div class="card purple">
+<span class="label label-purple">GIT</span>
+<h3>The tool on your computer</h3>
+<ul>
+<li>Records every change</li>
+<li>Saves checkpoints (commits)</li>
+<li>Lets you compare and go back</li>
+</ul>
+</div>
+
+<div class="card blue">
+<span class="label label-blue">GITHUB</span>
+<h3>The place your team shares it</h3>
+<ul>
+<li>Hosts the project online</li>
+<li>Pull Requests and reviews</li>
+<li>Issues and automated checks</li>
+</ul>
+</div>
+
+</div>
+
+<div class="note">
+<p><strong>Git</strong> tracks the changes. <strong>GitHub</strong> is where the team works together around them.</p>
+</div>
+
+
+
+# The whole workflow in one picture
+
+<div class="flow">
+<span class="node feature">Branch</span>
+<span class="arrow">→</span>
+<span class="node">Commit</span>
+<span class="arrow">→</span>
+<span class="node">Push</span>
+<span class="arrow">→</span>
+<span class="node blue">Pull Request</span>
+<span class="arrow">→</span>
+<span class="node green">Review + Checks</span>
+<span class="arrow">→</span>
+<span class="node main">main</span>
+</div>
+
+<div class="note">
+<p>The rest of the workshop just walks through this line, one step at a time.</p>
+</div>
+
+
+
+# Step 1 · Start tracking changes
+
+## Turn a normal folder into a Git project
+
+```bash
+git init          # start tracking this folder
+git add .         # stage your files
+git commit -m "Initial project setup"
+```
+
+<div class="note">
+<p>A <strong>commit</strong> is a saved checkpoint. You can always come back to it.</p>
+</div>
+
+
+
+# Write commit messages people understand
+
+<div class="grid-2">
+
+<div class="card">
+<span class="label label-purple">NOT HELPFUL</span>
+
+```bash
+git commit -m "stuff"
+```
+
+<p class="muted">Nobody knows what changed.</p>
+</div>
+
+<div class="card green">
+<span class="label label-green">HELPFUL</span>
+
+```bash
+git commit -m "Add baseline churn model"
+```
+
+<p class="muted">Answers the question: what changed?</p>
+</div>
+
+</div>
+
+
+
+# Read the history
+
+## Anyone should be able to see what happened
+
+```bash
+git log --oneline
+```
+
+```text
+a91f4d2 Add baseline churn model
+31c72a1 Initial project setup
+```
+
+Look at a specific change:
+
+```bash
+git show a91f4d2
+```
+
+
+
+# Step 2 · Put it on GitHub
+
+## Send your local project to the shared repository
+
+```bash
+git branch -M main
+
+git remote add origin \
+  https://github.com/YOUR-ORG/churn-project.git
+
+git push -u origin main
+```
+
+<div class="flow">
+<span class="node">Your computer</span>
+<span class="arrow">git push →</span>
+<span class="node main">GitHub · main</span>
+</div>
+
+
+
+# Three commands you'll use daily
+
+<div class="grid-3">
+
+<div class="card purple">
+<span class="label label-purple">FIRST TIME</span>
+<h3><code>git clone</code></h3>
+<p>Download the repository.</p>
+</div>
+
+<div class="card blue">
+<span class="label label-blue">GET UPDATES</span>
+<h3><code>git pull</code></h3>
+<p>Bring in the team's latest changes.</p>
+</div>
+
+<div class="card green">
+<span class="label label-green">SEND WORK</span>
+<h3><code>git push</code></h3>
+<p>Upload your commits.</p>
+</div>
+
+</div>
+
+
+
+# Step 3 · Work on a branch
+
+## Never experiment directly on <code>main</code>
+
+```bash
+git switch -c feature/new-model
+```
+
+<div class="grid-2">
+
+<div class="card">
+<span class="label label-purple">WHY</span>
+<p>A branch is a safe copy where you can make changes without touching the shared project.</p>
+</div>
+
+<div class="card blue">
+<span class="label label-blue">NAMING</span>
+<p><code>feature/clean-data</code></p>
+<p><code>feature/random-forest</code></p>
+<p><code>experiment/xgboost</code></p>
+</div>
+
+</div>
+
+
+
+# The daily loop on a branch
+
+<div class="steps">
+<div class="step"><div class="num">1</div><p>Create branch</p></div>
+<div class="step"><div class="num">2</div><p>Make changes</p></div>
+<div class="step"><div class="num">3</div><p>Commit</p></div>
+<div class="step"><div class="num">4</div><p>Push</p></div>
+<div class="step"><div class="num">5</div><p>Open PR</p></div>
+</div>
+
+```bash
+git switch -c feature/new-model
+
+git add .
+git commit -m "Add baseline model"
+
+git push -u origin feature/new-model
+```
+
+
+
+# 🧪 Quick check
+
+## Which command makes a new branch AND switches to it?
+
+<div class="grid-2">
+
+<div class="card">
+<p><strong>A</strong> &nbsp; <code>git branch feature/model</code></p>
+<p><strong>B</strong> &nbsp; <code>git switch -c feature/model</code></p>
+</div>
+
+<div class="card">
+<p><strong>C</strong> &nbsp; <code>git checkout main</code></p>
+<p><strong>D</strong> &nbsp; <code>git push origin main</code></p>
+</div>
+
+</div>
+
+<details>
+<summary>Reveal answer</summary>
+<p><strong class="green-text">B.</strong> It creates the branch and moves you onto it in one step.</p>
+</details>
+
+
+
+# Step 4 · Pull Requests
+
+## A Pull Request is where the team reviews your change
+
+<div class="flow">
+<span class="node feature">feature/model</span>
+<span class="arrow">→ Pull Request →</span>
+<span class="node main">main</span>
+</div>
+
+<div class="grid-3">
+
+<div class="card purple">
+<span class="label label-purple">AUTHOR</span>
+<p>Explains the change.</p>
+</div>
+
+<div class="card blue">
+<span class="label label-blue">REVIEWER</span>
+<p>Asks questions, suggests fixes.</p>
+</div>
+
+<div class="card green">
+<span class="label label-green">CHECKS</span>
+<p>Run automatically.</p>
+</div>
+
+</div>
+
+<div class="note">
+<p>The point isn't clicking "merge" — it's the <strong>shared review before the change reaches <code>main</code></strong>.</p>
+</div>
+
+
+
+# Merge conflicts
+
+## Git can spot a clash. It can't decide who's right.
+
+Two people change the same line:
+
+```python
+threshold = 0.50     # yours
+threshold = 0.65     # theirs
+```
+
+Git shows both and asks you to choose:
+
+```text
+<<<<<<< HEAD
+threshold = 0.50
+=======
+threshold = 0.65
+>>>>>>> feature/model
+```
+
+<div class="note">
+<p><strong>You</strong> pick the right value, edit the file, then <code>git add</code> and <code>git commit</code>.</p>
+</div>
+
+
+
+# Don't commit everything
+
+## Use a <code>.gitignore</code> file
+
+```text
+data/
+.env
+credentials.json
+__pycache__/
+.ipynb_checkpoints/
+```
+
+<div class="grid-2">
+
+<div class="card">
+<span class="label label-purple">KEEP OUT</span>
+<p>Secrets, large data, and generated files.</p>
+</div>
+
+<div class="card green">
+<span class="label label-green">REMEMBER</span>
+<p>GitHub is for collaboration — not for publishing sensitive data.</p>
+</div>
+
+</div>
+
+
+
+# A tidy repository
+
+## Structure makes the project easy to pick up
+
+```text
+churn-project/
+├── data/
+├── notebooks/        # explore & visualize
+├── src/              # reusable, tested code
+│   ├── preprocessing.py
+│   └── model.py
+├── tests/
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
+
+<div class="note">
+<p>Explore in <strong>notebooks</strong>, then move stable logic into <strong><code>src/</code></strong>.</p>
+</div>
+
+
+
+# A README that welcomes new teammates
+
+## Answer these six questions
+
+<div class="grid-2">
+
+<div class="card">
+<ul>
+<li>What problem are we solving?</li>
+<li>How do I install it?</li>
+<li>How do I run it?</li>
+<li>Where is the data?</li>
+<li>How is it structured?</li>
+<li>How do I contribute?</li>
+</ul>
+</div>
+
+<div class="card green">
+
+```markdown
+# Customer Churn Prediction
+
+Predict customer churn with ML.
+
+## Setup
+pip install -r requirements.txt
+
+## Run
+python -m src.model
+```
+
+</div>
+
+</div>
+
+
+
+# Automated checks (CI)
+
+## What if every Pull Request tested itself?
+
+<div class="flow">
+<span class="node feature">Pull Request</span>
+<span class="arrow">→</span>
+<span class="node blue">GitHub Actions</span>
+<span class="arrow">→</span>
+<span class="node green">Tests run</span>
+<span class="arrow">→</span>
+<span class="node main">Merge</span>
+</div>
+
+A small file turns this on:
+
+```yaml
+# .github/workflows/tests.yml
+name: Tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - run: pytest
+```
+
+
+
+# When a check fails
+
+<div class="grid-2">
+
+<div class="card green">
+<span class="label label-green">PASS</span>
+<p>Keep reviewing and merge when ready.</p>
+</div>
+
+<div class="card purple">
+<span class="label label-purple">FAIL</span>
+<p>Investigate and fix the branch <strong>before</strong> merging.</p>
+</div>
+
+</div>
+
+<div class="note">
+<p>A failing check is an early warning that something may be broken.</p>
+</div>
+
+
+
+# 🧪 Hands-on challenge
+
+## Create a branch and open a Pull Request
+
+<div class="grid-2">
+
+<div class="card purple">
+<span class="label label-purple">YOUR TASK</span>
+
+```bash
+git switch main
+git pull
+
+git switch -c feature/your-name-model
+```
+
+<p>Create <code>models/your_name_model.py</code>.</p>
+</div>
+
+<div class="card blue">
+<span class="label label-blue">THEN</span>
+
+```bash
+git add .
+git commit -m "Add baseline model"
+
+git push -u origin \
+  feature/your-name-model
+```
+
+<p>Open a Pull Request on GitHub.</p>
+</div>
+
+</div>
+
+<div class="note">
+<p><strong>Success:</strong> your branch is on GitHub and your PR shows the change clearly.</p>
+</div>
+
+
+
+# From messy to reliable
+
+<div class="grid-2">
+
+<div class="card">
+<span class="label label-purple">BEFORE</span>
+<p class="center"><code>final_model_v7_FINAL.ipynb</code></p>
+</div>
+
+<div class="card green">
+<span class="label label-green">AFTER</span>
+<p class="center"><code>feature → PR → review → main</code></p>
+</div>
+
+</div>
+
+<div class="note">
+<p>Same team. Same project. Now it's <strong>simple, reviewable, and reproducible.</strong></p>
+</div>
+
+
+
+<!-- ============================ CLOSING ============================ -->
+
+<div class="hero">
+
+# Let's build it for real.
+
+<div class="accent"></div>
+
+<div class="subtitle">
+Open VS Code. Open a terminal. Create your first branch.
+</div>
+
+<div class="note">
+<p><strong>Start here:</strong> <code>git status</code></p>
+</div>
+
+</div>
