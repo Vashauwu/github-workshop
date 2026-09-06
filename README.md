@@ -1,140 +1,143 @@
-# Cómo instalar Quarto y ver la presentación
+# How to Install Quarto and View the Presentation
 
-Esta guía explica, paso a paso, cómo instalar **Quarto** en **Windows** y en **Mac**, y cómo abrir la presentación (`.qmd`) para verla en el navegador.
+This guide explains, step by step, how to install **Quarto** on **Windows** and **Mac**, and how to open the presentation (`.qmd`) and view it in a web browser.
 
-No hace falta saber programar. Solo copiar y pegar algunos comandos.
+No programming knowledge is required. You only need to copy and paste a few commands.
 
 ---
 
-## ¿Qué es Quarto y por qué lo necesitamos?
+## What is Quarto and Why Do We Need It?
 
-**Quarto** es una herramienta gratuita que convierte un archivo de texto (`.qmd`) en una presentación de diapositivas que se abre en el navegador (formato HTML).
+**Quarto** is a free tool that converts a text file (`.qmd`) into a slide presentation that can be opened in a web browser (HTML format).
 
-El flujo es sencillo:
+The workflow is simple:
 
+```text
+presentation.qmd  ──►  Quarto  ──►  presentation.html
 ```
-archivo.qmd  ──►  Quarto  ──►  presentación.html
-```
 
-Solo se instala **una vez** y después basta con un comando para generar la presentación.
+You only need to install **Quarto once**. After that, a single command is enough to generate the presentation.
 
 ---
 
 ## Windows
 
-### Opción A — Instalador (la más fácil)
+### Option A — Installer (easiest)
 
-1. Entra a la página oficial: <https://quarto.org/docs/get-started/>
-2. Haz clic en el botón azul **Download Quarto CLI**.
-3. Abre el archivo descargado (`.exe`).
-4. Sigue el asistente de instalación haciendo clic en **Next** hasta terminar. Deja todas las opciones por defecto.
-5. Cierra el asistente al finalizar.
+1. Go to the official website: <https://quarto.org/docs/get-started/>
+2. Click the blue **Download Quarto CLI** button.
+3. Open the downloaded file (`.exe`).
+4. Follow the installation wizard by clicking **Next** until the installation is complete. Leave all options at their default settings.
+5. Close the wizard when finished.
 
-### Opción B — Con un comando (para usuarios técnicos)
+### Option B — Using a command (for technical users)
 
-Abre **PowerShell** o el **Símbolo del sistema** y escribe:
+Open **PowerShell** or **Command Prompt** and enter:
 
 ```powershell
 winget install Posit.Quarto
 ```
 
-### Comprobar que quedó instalado
+### Verify the installation
 
-Abre **PowerShell** o el **Símbolo del sistema** y escribe:
+Open **PowerShell** or **Command Prompt** and enter:
 
 ```powershell
 quarto --version
 ```
 
-Si aparece un número de versión (por ejemplo `1.5.57`), ¡todo está listo!
+If a version number appears (for example, `1.5.57`), everything is ready!
 
 ---
 
 ## Mac
 
-### Opción A — Instalador (la más fácil)
+### Option A — Installer (easiest)
 
-1. Entra a la página oficial: <https://quarto.org/docs/get-started/>
-2. Haz clic en el botón azul **Download Quarto CLI** (descargará un archivo `.pkg`).
-3. Ve a la carpeta de **Descargas** y haz doble clic en el archivo `.pkg`.
-4. Sigue las instrucciones del asistente y haz clic en **Close** al terminar.
+1. Go to the official website: <https://quarto.org/docs/get-started/>
+2. Click the blue **Download Quarto CLI** button (this will download a `.pkg` file).
+3. Go to your **Downloads** folder and double-click the `.pkg` file.
+4. Follow the installation instructions and click **Close** when finished.
 
-### Opción B — Con Homebrew (para usuarios técnicos)
+### Option B — Using Homebrew (for technical users)
 
-Si ya tienes [Homebrew](https://brew.sh) instalado, abre la app **Terminal** y escribe:
+If you already have [Homebrew](https://brew.sh) installed, open the **Terminal** app and enter:
 
 ```bash
 brew install --cask quarto
 ```
 
-### Comprobar que quedó instalado
+### Verify the installation
 
-Abre la app **Terminal** (búscala con Spotlight: `Cmd + Espacio` y escribe "Terminal") y escribe:
+Open the **Terminal** app (find it using Spotlight: `Cmd + Space` and type "Terminal") and enter:
 
 ```bash
 quarto --version
 ```
 
-Si aparece un número de versión, ¡todo está listo!
+If a version number appears, everything is ready!
 
 ---
 
-## Ver la presentación
+## View the Presentation
 
-Una vez instalado Quarto, sigue estos pasos (igual en Windows y en Mac):
+Once Quarto is installed, follow these steps (the process is the same on Windows and Mac):
 
-1. Coloca el archivo de la presentación (`github-workshop-simple.qmd`) en una carpeta fácil de encontrar, por ejemplo el **Escritorio**.
+1. Place the presentation file (`github-workshop-simple.qmd`) in an easy-to-find folder, such as the **Desktop**.
 
-2. Abre la terminal:
-   - **Windows:** PowerShell o Símbolo del sistema.
-   - **Mac:** la app Terminal.
+2. Open the terminal:
+   - **Windows:** PowerShell or Command Prompt.
+   - **Mac:** the Terminal app.
 
-3. Ubícate en la carpeta donde está el archivo. Por ejemplo, si está en el Escritorio:
+3. Navigate to the folder where the file is located. For example, if it is on the Desktop:
 
    ```bash
    cd Desktop
    ```
 
-4. Genera la presentación:
+4. Generate the presentation:
 
    ```bash
    quarto render github-workshop-simple.qmd
    ```
 
-   Esto creará un archivo `github-workshop-simple.html` en la misma carpeta. Ábrelo con doble clic y se verá en el navegador.
+   This will create a `github-workshop-simple.html` file in the same folder. Double-click it to open it in your browser.
 
-### Alternativa: vista previa en vivo
+### Alternative: Live Preview
 
-Si prefieres que la presentación se actualice sola cada vez que se edita el archivo, usa:
+If you prefer the presentation to update automatically whenever the file is edited, use:
 
 ```bash
 quarto preview github-workshop-simple.qmd
 ```
 
-Se abrirá automáticamente en el navegador. Para detenerla, presiona `Ctrl + C` en la terminal.
+The presentation will automatically open in your browser. To stop the preview, press `Ctrl + C` in the terminal.
 
 ---
 
-## Moverse dentro de la presentación
+## Navigating the Presentation
 
-- **Flechas del teclado** (← →) o clic para avanzar y retroceder.
-- Tecla **F** para pantalla completa.
-- Tecla **Esc** para ver todas las diapositivas en miniatura.
-- Tecla **S** para abrir la vista del ponente (notas y temporizador).
-
----
-
-## Preguntas frecuentes
-
-**¿Necesito instalar algo más?**
-No para esta presentación. Quarto por sí solo genera el HTML. (Solo se necesitarían herramientas extra si se quisiera exportar a PDF, que no es el caso aquí.)
-
-**¿Puedo compartir la presentación con alguien que no tenga Quarto?**
-Sí. Una vez generado el archivo `.html`, se puede enviar por correo o subir a un servidor y se abre en cualquier navegador, sin instalar nada.
-
-**¿Dónde consulto la documentación oficial?**
-En <https://quarto.org/docs/get-started/> encontrarás guías para Windows, Mac y Linux.
+- **Keyboard arrows** (← →) or click to move forward and backward.
+- Press **F** for full-screen mode.
+- Press **Esc** to view all slides as thumbnails.
+- Press **S** to open the speaker view (notes and timer).
 
 ---
 
-*Cualquier duda con la instalación, con gusto la resolvemos juntos.*
+## Frequently Asked Questions
+
+**Do I need to install anything else?**
+
+No, not for this presentation. Quarto generates the HTML by itself. (Additional tools would only be required if you wanted to export the presentation to PDF, which is not the case here.)
+
+**Can I share the presentation with someone who does not have Quarto?**
+
+Yes. Once the `.html` file has been generated, you can send it by email or upload it to a server. It will open in any web browser without requiring Quarto to be installed.
+
+**Where can I find the official documentation?**
+
+You can find Windows, Mac, and Linux guides at <https://quarto.org/docs/get-started/>.
+
+---
+
+*If you have any questions about the installation, we'll be happy to help you resolve them together.*
